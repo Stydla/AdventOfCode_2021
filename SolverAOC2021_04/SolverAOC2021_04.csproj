@@ -77,14 +77,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bingo.cs" />
+    <Compile Include="InputData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\AdventOfCode\Interfaces\Interfaces.csproj">
-      <Project>{8e871211-7987-4960-81c6-25538dfdca91}</Project>
-      <Name>Interfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="SolverAOC2021_04\input.txt">
@@ -126,6 +122,12 @@
     <Content Include="SolverAOC2021_04\Tests\out2_part1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AdventOfCode\Interfaces\Interfaces.csproj">
+      <Project>{8e871211-7987-4960-81c6-25538dfdca91}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

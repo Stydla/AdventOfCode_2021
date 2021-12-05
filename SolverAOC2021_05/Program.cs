@@ -10,18 +10,26 @@ namespace SolverAOC2021_05
   public class Program : BaseAdventSolver, IAdventSolver
   {
 
-    public override string SolverName => "SolverAOC2021_05"/*TODO: Task Name*/;
+    public override string SolverName => "Day 5: Hydrothermal Venture"/*TODO: Task Name*/;
 
     public override string InputsFolderName => "SolverAOC2021_05";
 
     public override string SolveTask1(string InputData)
     {
-      throw new NotImplementedException();
+      Data d = new Data(InputData);
+
+      string res = d.Solve1();
+
+      return res;
     }
 
     public override string SolveTask2(string InputData)
     {
-      throw new NotImplementedException();
+      Data d = new Data(InputData);
+
+      string res = d.Solve2();
+
+      return res;
     }
   }
 }
