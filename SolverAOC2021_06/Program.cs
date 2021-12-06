@@ -10,18 +10,23 @@ namespace SolverAOC2021_06
   public class Program : BaseAdventSolver, IAdventSolver
   {
 
-    public override string SolverName => "SolverAOC2021_06"/*TODO: Task Name*/;
+    public override string SolverName => "Day 6: Lanternfish"/*TODO: Task Name*/;
 
     public override string InputsFolderName => "SolverAOC2021_06";
 
     public override string SolveTask1(string InputData)
     {
-      throw new NotImplementedException();
+
+      Data d = new Data(InputData);
+      long res = d.Solve1();
+      return res.ToString();
     }
 
     public override string SolveTask2(string InputData)
     {
-      throw new NotImplementedException();
+      Data d = new Data(InputData);
+      long res = d.Solve2();
+      return res.ToString();
     }
   }
 }
