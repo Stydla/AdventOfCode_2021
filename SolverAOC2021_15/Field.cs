@@ -10,20 +10,35 @@ namespace SolverAOC2021_15
   {
 
     public int X, Y, RiskLevel;
-
     public int TotalRiskLevel = int.MaxValue;
+    public List<List<Field>> AllFields;
+
+    private List<Field> _Neighbours;
+    public List<Field> Neighbours
+    {
+      get
+      {
+        if(_Neighbours == null)
+        {
+          _Neighbours = GetNeighbours(AllFields);
+        }
+        return _Neighbours;
+      }
+    }
 
     public EState State;
-    public Field(int x, int y, int riskLevel)
+    public Field(int x, int y, int riskLevel, List<List<Field>> allFields)
     {
       X = x;
       Y = y;
       RiskLevel = riskLevel;
       State = EState.Fresh;
+      AllFields = allFields;
     }
 
-    public void Solve(List<List<Field>> fields)
+    public List<Field> Solve(List<List<Field>> fields)
     {
+      List<Field> changedFields = new List<Field>();
       State = EState.Closed;
       foreach(Field f in GetNeighbours(fields))
       {
@@ -34,11 +49,13 @@ namespace SolverAOC2021_15
         {
           TotalRiskLevel = tmpRiskLevel;
           State = EState.Changed;
+          changedFields.Add(this);
         }
       }
+      return changedFields;
     }
 
-    public List<Field> GetNeighbours(List<List<Field>> fields)
+    private List<Field> GetNeighbours(List<List<Field>> fields)
     {
       List<Field> res = new List<Field>();
       for (int i = -1; i <= 1; i ++)

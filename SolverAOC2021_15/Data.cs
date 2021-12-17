@@ -30,7 +30,7 @@ namespace SolverAOC2021_15
             int y = RiskLevelsMap.Count - 1;
             int x = RiskLevelsMap[y].Count;
             
-            Field f = new Field(x, y, riskLevel);
+            Field f = new Field(x, y, riskLevel, RiskLevelsMap);
             RiskLevelsMap[y].Add(f);
             RiskLevelsMapAll.Add(f);
           }
@@ -50,7 +50,7 @@ namespace SolverAOC2021_15
         {
           for(int j = 0; j < Width; j++)
           {
-            Field tmp = new Field((Width * v) + j, i, (RiskLevelsMap[i][j].RiskLevel + v - 1) % 9 + 1);
+            Field tmp = new Field((Width * v) + j, i, (RiskLevelsMap[i][j].RiskLevel + v - 1) % 9 + 1, RiskLevelsMap);
             RiskLevelsMap[i].Add(tmp);
             RiskLevelsMapAll.Add(tmp);
           }
@@ -67,7 +67,7 @@ namespace SolverAOC2021_15
           List<Field> tmpList = new List<Field>();
           for (int j = 0; j < Width; j++)
           {
-            Field tmp = new Field(j, i + (v * Height), (RiskLevelsMap[i][j].RiskLevel + v-1) % 9 + 1);
+            Field tmp = new Field(j, i + (v * Height), (RiskLevelsMap[i][j].RiskLevel + v-1) % 9 + 1, RiskLevelsMap);
 
             RiskLevelsMapAll.Add(tmp);
             tmpList.Add(tmp);
@@ -87,19 +87,20 @@ namespace SolverAOC2021_15
     {
       RiskLevelsMap[Height - 1][Width - 1].Init();
 
-
-      List<Field> forSolve = GetFieldsForSolve();
+      List<Field> changed = new List<Field>();
+      changed.Add(RiskLevelsMap[Height - 1][Width - 1]);
+      List<Field> forSolve = GetFieldsForSolve(changed);
+      
       while (forSolve.Count > 0)
       {
-        
+        List<Field> forNext = new List<Field>();
         foreach(Field f in forSolve)
         {
-          f.Solve(RiskLevelsMap);
+          forNext.AddRange(f.Solve(RiskLevelsMap));
         }
         
-        forSolve = GetFieldsForSolve();
+        forSolve = GetFieldsForSolve(forNext);
       }
-      //PrintRiskLevel();
       return RiskLevelsMap[0][0].TotalRiskLevel - RiskLevelsMap[0][0].RiskLevel;
     }
 
@@ -128,18 +129,27 @@ namespace SolverAOC2021_15
       }
       Console.WriteLine();
     }
-
-
-    private List<Field> GetFieldsForSolve()
+    private List<Field> GetFieldsForSolve(List<Field> changedList)
     {
       List<Field> res = new List<Field>();
-      foreach(Field f in RiskLevelsMapAll.Where(x => x.State == EState.Changed))
+      foreach (Field f in changedList)
       {
         f.State = EState.Closed;
-        res.AddRange(f.GetNeighbours(RiskLevelsMap));
+        res.AddRange(f.Neighbours);
       }
       return res.Distinct().ToList();
     }
+
+    //private List<Field> GetFieldsForSolve()
+    //{
+    //  List<Field> res = new List<Field>();
+    //  foreach(Field f in RiskLevelsMapAll.Where(x => x.State == EState.Changed))
+    //  {
+    //    f.State = EState.Closed;
+    //    res.AddRange(f.GetNeighbours(RiskLevelsMap));
+    //  }
+    //  return res.Distinct().ToList();
+    //}
        
 
   }
