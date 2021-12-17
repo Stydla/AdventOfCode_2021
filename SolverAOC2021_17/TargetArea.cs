@@ -33,5 +33,12 @@ namespace SolverAOC2021_17
         p.Coords.Y <= Y2;
         
     }
+
+    internal bool IsOut(Probe p)
+    {
+      return 
+        p.Coords.X > X2 ||
+        p.Coords.Y < Y1;
+    }
   }
 }

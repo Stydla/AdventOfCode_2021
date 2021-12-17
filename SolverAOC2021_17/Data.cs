@@ -20,7 +20,7 @@ namespace SolverAOC2021_17
 
       List<Probe> ProbesWithHit = new List<Probe>();
 
-      for(int i = 0; i < 1000; i++)
+      for(int i = 0; i < TargetArea.X2; i++)
       {
         for(int j = 0; j < 20; j++)
         {
@@ -28,7 +28,7 @@ namespace SolverAOC2021_17
           Coords c = new Coords(0, 0);
 
           Probe p = new Probe(c, v);
-          if(SimulateProble(p, 2500))
+          if(SimulateProble(p, 10000))
           {
             ProbesWithHit.Add(p);
           }
@@ -43,7 +43,7 @@ namespace SolverAOC2021_17
 
       List<Probe> ProbesWithHit = new List<Probe>();
 
-      for (int i = TargetArea.Y1; i < TargetArea.X2+1; i++)
+      for (int i = TargetArea.Y1; i < TargetArea.X2; i++)
       {
         for (int j = 0; j <= TargetArea.X2; j++)
         {
@@ -51,10 +51,11 @@ namespace SolverAOC2021_17
           Coords c = new Coords(0, 0);
 
           Probe p = new Probe(c, v);
-          if (SimulateProble(p, 1000))
+          if (SimulateProble(p, 10000))
           {
             ProbesWithHit.Add(p);
           }
+
         }
       }
 
@@ -69,6 +70,10 @@ namespace SolverAOC2021_17
         if(TargetArea.TestHit(p))
         {
           return true;
+        }
+        if(TargetArea.IsOut(p))
+        {
+          return false;
         }
       }
       return false;
