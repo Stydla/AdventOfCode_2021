@@ -79,6 +79,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Snailfish.cs" />
+    <Compile Include="Data.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\AdventOfCode\Interfaces\Interfaces.csproj">
