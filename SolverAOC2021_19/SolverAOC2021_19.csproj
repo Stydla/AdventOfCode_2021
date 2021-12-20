@@ -77,8 +77,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Map.cs" />
+    <Compile Include="Vector.cs" />
+    <Compile Include="Beacons.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scanner.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\AdventOfCode\Interfaces\Interfaces.csproj">
