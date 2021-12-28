@@ -77,6 +77,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ALU.cs" />
+    <Compile Include="Data.cs" />
+    <Compile Include="Instruction.cs" />
+    <Compile Include="InstructionFactory.cs" />
+    <Compile Include="Instructions\Add.cs" />
+    <Compile Include="Instructions\Div.cs" />
+    <Compile Include="Instructions\Eql.cs" />
+    <Compile Include="Instructions\Inp.cs" />
+    <Compile Include="Instructions\Instr.cs" />
+    <Compile Include="Instructions\Mod.cs" />
+    <Compile Include="Instructions\Mul.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
